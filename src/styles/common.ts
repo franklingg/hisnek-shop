@@ -22,11 +22,13 @@ export default StyleSheet.create({
     opacity: 0.6,
   },
   buttonText: {
-    color: colors.lightGray,
+    color: colors.lighterGray,
     fontFamily: fonts.family.medium,
     fontSize: fonts.size.text,
   },
   bold: {
+    fontSize: fonts.size.text,
+    color: colors.gray,
     fontFamily: fonts.family.bold,
   },
 });

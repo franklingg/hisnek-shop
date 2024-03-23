@@ -3,7 +3,7 @@ import {colors, commonStyle} from '~/styles';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: colors.background,
+    backgroundColor: colors.white,
     height: '100%',
     paddingVertical: 15,
     paddingHorizontal: 20,
@@ -19,7 +19,7 @@ export default StyleSheet.create({
   search: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.lighterGray,
     borderRadius: 20,
     paddingHorizontal: 15,
     paddingVertical: 3,

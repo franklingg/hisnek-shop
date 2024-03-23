@@ -13,7 +13,7 @@ export default function Button(props: ButtonProps) {
       style={[
         styles.container,
         props.type ? styles.iconButton : styles.textButton,
-        !props.enabled && props.enabled !== undefined ? styles.disabled : {},
+        !props.enabled && props.enabled !== undefined && styles.disabled,
       ]}
       {...props}>
       {props.children}

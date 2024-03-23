@@ -32,7 +32,7 @@ export default function Home({}: HomeProps) {
       .finally(() => {
         setIsLoading(false);
       });
-  });
+  }, []);
 
   useEffect(() => {
     setShownProducts(

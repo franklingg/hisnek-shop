@@ -1,8 +1,10 @@
 import {ApolloClient, InMemoryCache, gql} from '@apollo/client';
 import {Product} from './types';
 
+import {SERVER_PORT} from '@env';
+
 export const client = new ApolloClient({
-  uri: `http://localhost:${process.env.SERVER_PORT}/graphql`,
+  uri: `http://localhost:${SERVER_PORT}/graphql`,
   cache: new InMemoryCache(),
 });
 

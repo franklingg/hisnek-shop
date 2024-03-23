@@ -6,9 +6,11 @@ export default StyleSheet.create({
     gap: 8,
     alignItems: 'center',
     height: 250,
+    minWidth: '50%',
   },
   image: {
     flex: 1,
+    objectFit: 'contain',
   },
   price: {
     flexDirection: 'row',
