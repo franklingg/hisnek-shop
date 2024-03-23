@@ -29,10 +29,10 @@
         },
         {
             "id": 3,
-            "title": "Arroz Mahatma seleção especial, 500g",
-            "description": "Duis a leo nec enim venenatis viverra non a dui. Curabitur tempus est neque, eu accumsan massa congue id. Etiam ultricies neque quis nisl eleifend aliquet. Ut eget tellus cursus, pellentesque sem at, ultricies eros. Aenean pulvinar nisi lorem, et dictum purus laoreet sed. Nullam cursus neque nulla, scelerisque convallis ipsum interdum sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor diam a metus tristique dapibus. Etiam scelerisque ut ex a lacinia. Pellentesque pulvinar a ligula a pulvinar. Morbi efficitur tempor elit a ultrices. Ut feugiat mi vitae augue vulputate, a aliquam lectus sollicitudin. Vivamus elit turpis, interdum fermentum lorem vitae, cursus efficitur tortor. Aliquam nulla dolor, interdum a interdum vel, viverra non purus.",
-            "price": 4.98,
-            "discount": 10,
+            "title": "Molho de Salada",
+            "description": "Vivamus elit turpis, interdum fermentum lorem vitae, cursus efficitur tortor. Aliquam nulla dolor, interdum a interdum vel, viverra non purus.",
+            "price": 8.99,
+            "discount": 15,
             "image": "p3.png",
             "tags": [
                 "Comida"
@@ -40,31 +40,31 @@
         },
         {
             "id": 4,
-            "title": "Limpa fácil - vaso sanitário, 120ml",
-            "description": "Vivamus elit turpis, interdum fermentum lorem vitae, cursus efficitur tortor. Aliquam nulla dolor, interdum a interdum vel, viverra non purus.",
-            "price": 3.99,
-            "image": "p4.png",
-            "tags": [
-                "Limpeza"
-            ]
-        },
-        {
-            "id": 5,
             "title": "Laranja Cravo, 200g",
             "description": "Vivamus elit turpis, interdum fermentum lorem vitae, cursus efficitur tortor. Aliquam nulla dolor, interdum a interdum vel, viverra non purus.",
             "price": 2.99,
-            "image": "p5.png",
+            "image": "p4.png",
             "tags": [
                 "Comida",
                 "Fruta"
             ]
         },
         {
-            "id": 6,
-            "title": "Molho de Salada",
+            "id": 5,
+            "title": "Limpa fácil - vaso sanitário, 120ml",
             "description": "Vivamus elit turpis, interdum fermentum lorem vitae, cursus efficitur tortor. Aliquam nulla dolor, interdum a interdum vel, viverra non purus.",
-            "price": 8.99,
-            "discount": 15,
+            "price": 3.99,
+            "image": "p5.png",
+            "tags": [
+                "Limpeza"
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Arroz Mahatma seleção especial, 500g",
+            "description": "Duis a leo nec enim venenatis viverra non a dui. Curabitur tempus est neque, eu accumsan massa congue id. Etiam ultricies neque quis nisl eleifend aliquet. Ut eget tellus cursus, pellentesque sem at, ultricies eros. Aenean pulvinar nisi lorem, et dictum purus laoreet sed. Nullam cursus neque nulla, scelerisque convallis ipsum interdum sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor diam a metus tristique dapibus. Etiam scelerisque ut ex a lacinia. Pellentesque pulvinar a ligula a pulvinar. Morbi efficitur tempor elit a ultrices. Ut feugiat mi vitae augue vulputate, a aliquam lectus sollicitudin. Vivamus elit turpis, interdum fermentum lorem vitae, cursus efficitur tortor. Aliquam nulla dolor, interdum a interdum vel, viverra non purus.",
+            "price": 4.98,
+            "discount": 10,
             "image": "p6.png",
             "tags": [
                 "Comida"

@@ -10,12 +10,12 @@ export default StyleSheet.create({
     height: 56,
   },
   textButton: {
-    paddingHorizontal: 65,
+    paddingHorizontal: 25,
   },
   iconButton: {
     width: 56,
   },
   disabled: {
-    opacity: 0.6,
+    backgroundColor: colors.mediumGray,
   },
 });

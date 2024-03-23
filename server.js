@@ -8,5 +8,5 @@ const app = express();
 
 app.use('/graphql', jsonGraphqlExpress.default(mockData));
 app.listen(port).on('listening', () => {
-  console.log(`API running at http:localhost:${port}`);
+  console.log(`API running at http://localhost:${port}/graphql`);
 });
