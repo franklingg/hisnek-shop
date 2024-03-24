@@ -9,13 +9,14 @@ type ButtonProps = PropsWithChildren<RectButtonProperties> & {
 export default function Button(props: ButtonProps) {
   return (
     <RectButton
+      {...props}
       activeOpacity={0.6}
       style={[
         styles.container,
+        props.style,
         props.type ? styles.iconButton : styles.textButton,
         !props.enabled && props.enabled !== undefined && styles.disabled,
-      ]}
-      {...props}>
+      ]}>
       {props.children}
     </RectButton>
   );
