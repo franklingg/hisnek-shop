@@ -4,6 +4,7 @@ import {Home, Cart} from '~/screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors, fonts} from '~/styles';
+import {useCart} from '~/contexts/cartContext';
 
 export type TabParamList = {
   Home: undefined;
@@ -19,6 +20,7 @@ function tabIcon(name: string) {
 }
 
 export default function TabRouter() {
+  const {cartItems} = useCart();
   return (
     <Tab.Navigator
       initialRouteName="Explore"
@@ -46,7 +48,7 @@ export default function TabRouter() {
         name="Cart"
         component={Cart}
         options={{
-          title: 'Carrinho',
+          title: `Carrinho (${cartItems.length})`,
           tabBarIcon: tabIcon('shopping-cart-checkout'),
         }}
       />
