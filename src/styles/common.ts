@@ -15,6 +15,11 @@ export default StyleSheet.create({
     fontFamily: fonts.family.regular,
     textAlign: 'center',
   },
+  tiny: {
+    fontSize: fonts.size.small,
+    color: colors.gray,
+    fontFamily: fonts.family.regular,
+  },
   hidden: {
     fontSize: fonts.size.small,
     color: colors.gray,
