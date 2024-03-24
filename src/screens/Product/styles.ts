@@ -2,9 +2,6 @@ import {StyleSheet} from 'react-native';
 import {colors, commonStyle, fonts} from '~/styles';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   content: {
     minHeight: '100%',
     paddingHorizontal: 20,

@@ -22,4 +22,8 @@ export default StyleSheet.create({
     color: colors.black,
     fontSize: 20,
   },
+  small: {
+    transform: [{scale: 0.8}],
+    paddingVertical: 5,
+  },
 });

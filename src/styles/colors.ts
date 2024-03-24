@@ -8,6 +8,7 @@ export default {
   lighterGray: '#EEEFF0',
   black: '#002100',
   backdrop: 'rgba(0, 0, 0, 0.26)',
+  darkBackdrop: 'rgba(0, 0, 0, 0.76)',
 
   green: '#45BC1B',
   lightGreen: '#EDF9E9',

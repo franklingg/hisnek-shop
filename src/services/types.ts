@@ -7,3 +7,8 @@ export interface Product {
   discount?: number;
   tags: string[];
 }
+
+export interface CartProduct {
+  product: Product;
+  quantity: number;
+}

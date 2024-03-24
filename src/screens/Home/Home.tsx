@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {Alert, SafeAreaView, Text, View} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -12,6 +12,9 @@ import {getProducts} from '~/services/api';
 import Loading from '~/components/Loading';
 import {Product} from '~/services/types';
 import ProductCard from '~/components/ProductCard';
+import ProductFilter, {
+  FilterRefProps,
+} from '~/components/ProductFilter/ProductFilter';
 
 type HomeProps = NativeStackScreenProps<NavigationParamList, 'Explore'>;
 
@@ -20,6 +23,7 @@ export default function Home({}: HomeProps) {
   const [search, setSearch] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
   const [shownProducts, setShownProducts] = useState<Product[]>([]);
+  const filterRef = useRef<FilterRefProps>(null);
 
   useEffect(() => {
     getProducts()
@@ -42,11 +46,15 @@ export default function Home({}: HomeProps) {
     );
   }, [search, products]);
 
+  const openFilter = useCallback(() => {
+    filterRef.current?.present();
+  }, [filterRef]);
+
   return isLoading ? (
     <Loading />
   ) : (
     <SafeAreaView style={styles.container}>
-      <Button style={styles.filter}>
+      <Button style={styles.filter} onPress={openFilter}>
         <FontAwesome name="filter" size={25} color={'gray'} />
         <Text style={commonStyle.text}>Filtros</Text>
       </Button>
@@ -68,6 +76,8 @@ export default function Home({}: HomeProps) {
         ItemSeparatorComponent={() => <View style={styles.productGap} />}
         renderItem={p => <ProductCard product={p.item} />}
       />
+
+      <ProductFilter ref={filterRef} />
     </SafeAreaView>
   );
 }

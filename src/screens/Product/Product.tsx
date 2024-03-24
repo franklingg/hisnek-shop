@@ -1,15 +1,16 @@
 import React, {useCallback, useState} from 'react';
-import {Image, ScrollView, Text, View} from 'react-native';
+import {Alert, Image, ScrollView, Text, View} from 'react-native';
 import styles from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {NavigationParamList} from '~/routes';
-import ReturnButton from '~/components/ReturnButton';
 import productImages from '~/assets/img/products';
 import {commonStyle} from '~/styles';
 import {calculatePrice} from '~/utils/price';
 import Button from '~/components/Button';
 import {Host, Portal} from 'react-native-portalize';
+import {useCart} from '~/contexts/cartContext';
+import ReturnButton from '~/components/ReturnButton';
 import AddRemoveHelper from '~/components/AddRemoveHelper';
 
 type ProductProps = NativeStackScreenProps<NavigationParamList, 'Product'>;
@@ -17,6 +18,7 @@ type ProductProps = NativeStackScreenProps<NavigationParamList, 'Product'>;
 export default function ProductPage({route}: ProductProps) {
   const product = route.params.product;
 
+  const {addItem} = useCart();
   const [quantity, setQuantity] = useState(1);
 
   const changeQuantity = useCallback(
@@ -25,6 +27,12 @@ export default function ProductPage({route}: ProductProps) {
     },
     [quantity],
   );
+
+  const addToCart = useCallback(() => {
+    addItem({product, quantity});
+    setQuantity(1);
+    Alert.alert('Adicionado ao carrinho');
+  }, [addItem, product, quantity]);
 
   return (
     <Host>
@@ -49,9 +57,10 @@ export default function ProductPage({route}: ProductProps) {
         <View style={styles.actions}>
           <AddRemoveHelper
             currentValue={quantity}
-            onChangeValue={changeQuantity}
+            onIncrease={() => changeQuantity(1)}
+            onDecrease={() => changeQuantity(-1)}
           />
-          <Button enabled={quantity > 0}>
+          <Button enabled={quantity > 0} onPress={addToCart}>
             <Text style={styles.addCart}>Adicionar ao carrinho</Text>
           </Button>
         </View>
