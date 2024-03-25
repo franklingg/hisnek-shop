@@ -4,9 +4,9 @@ import {CartProduct} from '~/services/types';
 interface ICartContext {
   cartItems: Array<CartProduct>;
   addItem: (cartItem: CartProduct) => void;
-  removeItem: (productId: number) => void;
+  removeItem: (productId: string) => void;
   clearCart: () => void;
-  changeQuantity: (productId: number, newQuantity: number) => void;
+  changeQuantity: (productId: string, newQuantity: number) => void;
 }
 
 const defaultState: ICartContext = {
@@ -23,14 +23,14 @@ export function CartProvider({children}: {children: React.ReactNode}) {
   const [cartItems, setCartItems] = useState(defaultState.cartItems);
 
   const removeItem = useCallback(
-    (productId: number) => {
+    (productId: string) => {
       setCartItems([...cartItems.filter(i => i.product.id !== productId)]);
     },
     [cartItems],
   );
 
   const changeQuantity = useCallback(
-    (productId: number, newQuantity: number) => {
+    (productId: string, newQuantity: number) => {
       const items = [...cartItems];
       const idxToChange = items.findIndex(i => i.product.id === productId);
       if (idxToChange !== -1) {

@@ -13,12 +13,14 @@
       "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-hisnekshop-dev-172229-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
+      "auth": {
+        "hisnekshop8c36d814": {}
+      },
       "api": {
         "hisnekshop": {}
       },
-      "auth": {
-        "hisnekshop8c36d814": {},
-        "userPoolGroups": {}
+      "storage": {
+        "s3hisnekshopstorage3f0e697b": {}
       }
     }
   }

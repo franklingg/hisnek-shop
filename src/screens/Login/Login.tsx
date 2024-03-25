@@ -13,7 +13,7 @@ import {Host} from 'react-native-portalize';
 type LoginProps = NativeStackScreenProps<NavigationParamList, 'Login'>;
 
 export default function Login({navigation}: LoginProps) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showError, setShowError] = useState(false);
@@ -23,16 +23,18 @@ export default function Login({navigation}: LoginProps) {
       .then(() => {
         navigation.navigate('Home');
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setIsLoading(false));
   }, [navigation]);
 
   const performLogin = useCallback(() => {
+    setIsLoading(true);
     login(username, password)
       .then(() => {
-        setIsLoading(false);
         navigation.navigate('Home');
       })
-      .catch(() => setShowError(true));
+      .catch(() => setShowError(true))
+      .finally(() => setIsLoading(false));
   }, [password, username, navigation]);
 
   const guestNavigate = useCallback(() => {

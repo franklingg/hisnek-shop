@@ -1,7 +1,7 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "hisnekshop8c36d814_identitypool_bfb27a42",
+    "identityPoolName": "hisnekshop8c36d814_identitypool_421673f5",
     "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "hisnek8c36d814",
     "userPoolName": "hisnekshop8c36d814_userpool_8c36d814",
@@ -37,9 +37,7 @@
     "resourceName": "hisnekshop8c36d814",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "manual",
-    "userPoolGroupList": [
-      "hisnekusers"
-    ],
+    "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,

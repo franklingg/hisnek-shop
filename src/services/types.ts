@@ -6,6 +6,7 @@ export interface Product {
   image: string;
   discount?: number | null;
   tags: string[];
+  remote?: boolean;
 }
 
 export interface CartProduct {

@@ -74,8 +74,8 @@ const ProductFilter = forwardRef<BottomSheetModal, ProductFilterProps>(
       setLowestPrice(0);
       setHighestPrice(100);
       setTags([]);
-      performFilter();
-    }, [performFilter]);
+      onFilter([0, 100], []);
+    }, [onFilter]);
 
     return (
       <BottomSheetModalProvider>

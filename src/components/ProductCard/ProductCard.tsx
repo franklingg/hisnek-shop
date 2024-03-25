@@ -7,21 +7,26 @@ import productImages from '~/assets/img/products';
 import {calculatePrice} from '~/utils/price';
 import {commonStyle} from '~/styles';
 import {useNavigation} from '@react-navigation/native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {NavigationParamList} from '~/routes';
 
 type ProductCardProps = {
   product: Product;
+  onPressProduct: () => void;
 };
 
-export default function ProductCard({product}: ProductCardProps) {
-  const navigation = useNavigation();
-
-  const navigateToProduct = useCallback(() => {
-    navigation.navigate('Product', {product});
-  }, [navigation, product]);
-
+export default function ProductCard({
+  product,
+  onPressProduct,
+}: ProductCardProps) {
   return (
-    <TouchableOpacity style={styles.card} onPress={navigateToProduct}>
-      <Image style={styles.image} source={productImages[product.id]} />
+    <TouchableOpacity style={styles.card} onPress={onPressProduct}>
+      <Image
+        style={styles.image}
+        source={
+          product.remote ? {uri: product.image} : productImages[product.id]
+        }
+      />
       <View style={styles.price}>
         <Text style={styles.finalPrice}>R${calculatePrice(product)}</Text>
         {product.discount && (

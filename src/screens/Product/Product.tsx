@@ -38,7 +38,12 @@ export default function ProductPage({route}: ProductProps) {
     <Host>
       <ReturnButton />
       <ScrollView contentContainerStyle={styles.content}>
-        <Image style={styles.image} source={productImages[product.id]} />
+        <Image
+          style={styles.image}
+          source={
+            product.remote ? {uri: product.image} : productImages[product.id]
+          }
+        />
         <View style={styles.tags}>
           {product.tags.map(t => (
             <Text key={t} style={styles.tagItem}>
