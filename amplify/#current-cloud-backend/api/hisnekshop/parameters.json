@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "hisnekshop",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authhisnekshop8c36d814",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2024-03-24T21:03:45.840Z"
+}

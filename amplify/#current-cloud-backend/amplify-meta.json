@@ -1,0 +1,117 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hisnekshop-dev-172229-authRole",
+      "UnauthRoleArn": "arn:aws:iam::975050167441:role/amplify-hisnekshop-dev-172229-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::975050167441:role/amplify-hisnekshop-dev-172229-authRole",
+      "Region": "sa-east-1",
+      "DeploymentBucketName": "amplify-hisnekshop-dev-172229-deployment",
+      "UnauthRoleName": "amplify-hisnekshop-dev-172229-unauthRole",
+      "StackName": "amplify-hisnekshop-dev-172229",
+      "StackId": "arn:aws:cloudformation:sa-east-1:975050167441:stack/amplify-hisnekshop-dev-172229/3d82a4e0-ea1c-11ee-8e0b-066c85b575ab",
+      "AmplifyAppId": "d25irt93x1d620"
+    }
+  },
+  "api": {
+    "hisnekshop": {
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "hisnekshop8c36d814",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authhisnekshop8c36d814"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "5lr7jpv2ynfuvijakgu4jyq7te",
+        "GraphQLAPIEndpointOutput": "https://mlx5l4msjzdg7kynqe34ryoz2i.appsync-api.sa-east-1.amazonaws.com/graphql"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2024-03-25T12:53:43.884Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hisnekshop-dev-172229-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apihisnekshop"
+      },
+      "lastPushDirHash": "kjMq+fZRuff/6USqfA0ji6ZD9Qk="
+    }
+  },
+  "auth": {
+    "hisnekshop8c36d814": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "sa-east-1_QXC5iozfQ",
+        "AppClientIDWeb": "5rtoad1f674lo4lcp87rghf4m3",
+        "AppClientID": "6nmk9f9h3fk11fm2fm6epuv67h",
+        "IdentityPoolId": "sa-east-1:a060736a-9023-46b6-b71a-8486d3171fd5",
+        "UserPoolArn": "arn:aws:cognito-idp:sa-east-1:975050167441:userpool/sa-east-1_QXC5iozfQ",
+        "IdentityPoolName": "hisnekshop8c36d814_identitypool_8c36d814__dev",
+        "UserPoolName": "hisnekshop8c36d814_userpool_8c36d814"
+      },
+      "lastPushTimeStamp": "2024-03-25T12:53:44.720Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hisnekshop-dev-172229-deployment/amplify-cfn-templates/auth/hisnekshop8c36d814-cloudformation-template.json",
+        "logicalId": "authhisnekshop8c36d814"
+      },
+      "lastPushDirHash": "+iHFJOrADzmwgJUGGf3bIXFCtMk="
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "hisnekshop8c36d814",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2024-03-25T12:53:43.923Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hisnekshop-dev-172229-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "output": {},
+      "lastPushDirHash": "YlzdSknkY9uz2MSohgbvwMINP+o="
+    }
+  },
+  "function": {}
+}

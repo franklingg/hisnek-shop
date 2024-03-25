@@ -3,6 +3,7 @@ import {colors} from '~/styles';
 
 export default StyleSheet.create({
   loading: {
+    position: 'absolute',
     height: '100%',
     width: '100%',
     justifyContent: 'center',

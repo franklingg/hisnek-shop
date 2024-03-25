@@ -11,7 +11,7 @@ type SplashProps = NativeStackScreenProps<NavigationParamList, 'Splash'>;
 export default function Splash({navigation}: SplashProps) {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Home');
+      navigation.navigate('Login');
     }, 2000);
   }, [navigation]);
 

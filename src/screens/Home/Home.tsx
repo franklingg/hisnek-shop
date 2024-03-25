@@ -7,17 +7,20 @@ import {NavigationParamList} from '~/routes';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {colors, commonStyle} from '~/styles';
 import {FlatList, TextInput} from 'react-native-gesture-handler';
-import {getProducts} from '~/services/api';
+import {getMockProducts, getProducts} from '~/services/api';
 import Loading from '~/components/Loading';
 import {Product} from '~/services/types';
 import ProductCard from '~/components/ProductCard';
 import ProductFilter from '~/components/ProductFilter/ProductFilter';
 import {BottomSheetModal, TouchableOpacity} from '@gorhom/bottom-sheet';
+import {getCurrentUser} from 'aws-amplify/auth';
 import {calculatePrice} from '~/utils/price';
+import {Host} from 'react-native-portalize';
 
 type HomeProps = NativeStackScreenProps<NavigationParamList, 'Explore'>;
 
-export default function Home({}: HomeProps) {
+export default function Home({navigation}: HomeProps) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
@@ -25,9 +28,19 @@ export default function Home({}: HomeProps) {
   const filterRef = useRef<BottomSheetModal>(null);
 
   useEffect(() => {
-    getProducts()
-      .then(apiProducts => {
-        setProducts(apiProducts.data.allProducts);
+    getCurrentUser()
+      .then(() => setIsLoggedIn(true))
+      .catch(() => {})
+      .finally(async () => {
+        let apiProducts: Product[] = [];
+        // if (isLoggedIn) {
+        //   const result = await getProducts();
+        //   apiProducts = result.data.listProducts.items;
+        // } else {
+        const result = await getMockProducts();
+        apiProducts = result.data.allProducts;
+        // }
+        setProducts(apiProducts);
       })
       .catch(() => {
         Alert.alert('Erro ao buscar produtos');
@@ -35,7 +48,7 @@ export default function Home({}: HomeProps) {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   const openFilter = useCallback(() => {
     filterRef.current?.present();
@@ -46,7 +59,6 @@ export default function Home({}: HomeProps) {
       setShownProducts(
         [...products].filter(p => {
           const productPrice = calculatePrice(p);
-          console.log(prices, tags, p);
           if (
             // matches search
             p.title.toLowerCase().match(search.toLowerCase()) &&
@@ -69,34 +81,43 @@ export default function Home({}: HomeProps) {
     filterProducts([0, 100], []);
   }, [filterProducts, search]);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
-    <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.filter} onPress={openFilter}>
-        <FontAwesome name="filter" size={25} color={'gray'} />
-        <Text style={commonStyle.text}>Filtros</Text>
-      </TouchableOpacity>
+  return (
+    <Host>
+      {isLoading && <Loading />}
+      <SafeAreaView style={styles.container}>
+        <View style={[styles.header, isLoggedIn && styles.headerNoLogin]}>
+          {!isLoggedIn && (
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <FontAwesome name="user-circle-o" size={25} color={'gray'} />
+            </TouchableOpacity>
+          )}
 
-      <View style={styles.search}>
-        <FontAwesome name="search" size={20} color={'gray'} />
-        <TextInput
-          style={styles.input}
-          value={search}
-          onChangeText={setSearch}
-          placeholder="Buscar"
-          placeholderTextColor={colors.mediumGray}
+          <TouchableOpacity style={styles.filter} onPress={openFilter}>
+            <FontAwesome name="filter" size={25} color={'gray'} />
+            <Text style={commonStyle.text}>Filtros</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.search}>
+          <FontAwesome name="search" size={20} color={'gray'} />
+          <TextInput
+            style={styles.input}
+            value={search}
+            onChangeText={setSearch}
+            placeholder="Buscar"
+            placeholderTextColor={colors.mediumGray}
+          />
+        </View>
+
+        <FlatList
+          numColumns={2}
+          data={shownProducts}
+          ItemSeparatorComponent={() => <View style={styles.productGap} />}
+          renderItem={p => <ProductCard product={p.item} />}
         />
-      </View>
 
-      <FlatList
-        numColumns={2}
-        data={shownProducts}
-        ItemSeparatorComponent={() => <View style={styles.productGap} />}
-        renderItem={p => <ProductCard product={p.item} />}
-      />
-
-      <ProductFilter ref={filterRef} onFilter={filterProducts} />
-    </SafeAreaView>
+        <ProductFilter ref={filterRef} onFilter={filterProducts} />
+      </SafeAreaView>
+    </Host>
   );
 }

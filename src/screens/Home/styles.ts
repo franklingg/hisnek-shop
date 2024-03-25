@@ -9,8 +9,14 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: 'stretch',
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  headerNoLogin: {
+    justifyContent: 'flex-end',
+  },
   filter: {
-    alignSelf: 'flex-end',
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 8,
