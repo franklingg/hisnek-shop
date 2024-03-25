@@ -1,0 +1,25 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hisnekshop-dev-172229-authRole",
+      "UnauthRoleArn": "arn:aws:iam::975050167441:role/amplify-hisnekshop-dev-172229-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::975050167441:role/amplify-hisnekshop-dev-172229-authRole",
+      "Region": "sa-east-1",
+      "DeploymentBucketName": "amplify-hisnekshop-dev-172229-deployment",
+      "UnauthRoleName": "amplify-hisnekshop-dev-172229-unauthRole",
+      "StackName": "amplify-hisnekshop-dev-172229",
+      "StackId": "arn:aws:cloudformation:sa-east-1:975050167441:stack/amplify-hisnekshop-dev-172229/3d82a4e0-ea1c-11ee-8e0b-066c85b575ab",
+      "AmplifyAppId": "d25irt93x1d620",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-hisnekshop-dev-172229-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "api": {
+        "hisnekshop": {}
+      },
+      "auth": {
+        "hisnekshop8c36d814": {},
+        "userPoolGroups": {}
+      }
+    }
+  }
+}
