@@ -30,7 +30,7 @@ export default function Home({navigation}: HomeProps) {
   useEffect(() => {
     getCurrentUser()
       .then(() => setIsLoggedIn(true))
-      .catch(() => {})
+      .catch(() => setIsLoggedIn(false))
       .finally(async () => {
         if (isLoggedIn !== undefined) {
           let apiProducts: Product[] = [];
