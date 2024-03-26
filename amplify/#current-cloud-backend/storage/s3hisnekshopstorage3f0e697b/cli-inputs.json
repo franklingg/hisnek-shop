@@ -1,0 +1,15 @@
+{
+  "resourceName": "s3hisnekshopstorage3f0e697b",
+  "bucketName": "hisnekshop-storage-3f0e697b",
+  "policyUUID": "7a36bfef",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

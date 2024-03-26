@@ -2,6 +2,7 @@ import {ApolloClient, InMemoryCache, gql} from '@apollo/client';
 import {Product} from './types';
 import {signIn} from 'aws-amplify/auth';
 import {generateClient} from 'aws-amplify/api';
+import {getUrl} from 'aws-amplify/storage';
 import {SERVER_PORT, IP_ADDRESS} from '@env';
 import {listProducts} from '~/graphql/queries';
 
@@ -29,8 +30,27 @@ export const getMockProducts = () =>
       `),
   });
 
-export const getProducts = () => {
-  return awsClient.graphql({query: listProducts});
+export const getProducts = async () => {
+  const {data} = await awsClient.graphql({
+    query: listProducts,
+    authMode: 'apiKey',
+  });
+  const products = await Promise.all(
+    data.listProducts.items.map(async (i: Product) => {
+      const storageUrl = (
+        await getUrl({
+          key: i.image,
+          options: {
+            accessLevel: 'guest',
+          },
+        })
+      ).url;
+      i.image = storageUrl.toJSON();
+      i.remote = true;
+      return i;
+    }),
+  );
+  return products;
 };
 
 export const login = async (username: string, password: string) => {

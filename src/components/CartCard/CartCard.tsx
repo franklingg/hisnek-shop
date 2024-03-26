@@ -18,7 +18,14 @@ export default function CartCard({item}: CartCardProps) {
 
   return (
     <View style={styles.card}>
-      <Image style={styles.image} source={productImages[item.product.id]} />
+      <Image
+        style={styles.image}
+        source={
+          item.product.remote
+            ? {uri: item.product.image}
+            : productImages[item.product.id]
+        }
+      />
       <View style={styles.info}>
         <View style={styles.header}>
           <Text style={commonStyle.bold}>{item.product.title}</Text>

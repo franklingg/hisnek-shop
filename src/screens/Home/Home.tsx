@@ -20,7 +20,7 @@ import {Host} from 'react-native-portalize';
 type HomeProps = NativeStackScreenProps<NavigationParamList, 'Explore'>;
 
 export default function Home({navigation}: HomeProps) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
@@ -32,17 +32,19 @@ export default function Home({navigation}: HomeProps) {
       .then(() => setIsLoggedIn(true))
       .catch(() => {})
       .finally(async () => {
-        let apiProducts: Product[] = [];
-        // if (isLoggedIn) {
-        //   const result = await getProducts();
-        //   apiProducts = result.data.listProducts.items;
-        // } else {
-        const result = await getMockProducts();
-        apiProducts = result.data.allProducts;
-        // }
-        setProducts(apiProducts);
+        if (isLoggedIn !== undefined) {
+          let apiProducts: Product[] = [];
+          if (isLoggedIn) {
+            apiProducts = await getProducts();
+          } else {
+            const result = await getMockProducts();
+            apiProducts = result.data.allProducts;
+          }
+          setProducts(apiProducts);
+        }
       })
-      .catch(() => {
+      .catch(e => {
+        console.error(e);
         Alert.alert('Erro ao buscar produtos');
       })
       .finally(() => {
@@ -113,7 +115,14 @@ export default function Home({navigation}: HomeProps) {
           numColumns={2}
           data={shownProducts}
           ItemSeparatorComponent={() => <View style={styles.productGap} />}
-          renderItem={p => <ProductCard product={p.item} />}
+          renderItem={p => (
+            <ProductCard
+              product={p.item}
+              onPressProduct={() =>
+                navigation.navigate('Product', {product: p.item})
+              }
+            />
+          )}
         />
 
         <ProductFilter ref={filterRef} onFilter={filterProducts} />

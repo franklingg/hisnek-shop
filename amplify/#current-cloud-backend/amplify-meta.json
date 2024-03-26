@@ -16,11 +16,11 @@
     "hisnekshop": {
       "dependsOn": [
         {
-          "category": "auth",
-          "resourceName": "hisnekshop8c36d814",
           "attributes": [
             "UserPoolId"
-          ]
+          ],
+          "category": "auth",
+          "resourceName": "hisnekshop8c36d814"
         }
       ],
       "output": {
@@ -28,6 +28,13 @@
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
+            },
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 30,
+                "description": "api key description"
+              },
+              "authenticationType": "API_KEY"
             }
           ],
           "defaultAuthentication": {
@@ -38,16 +45,16 @@
           }
         },
         "GraphQLAPIIdOutput": "5lr7jpv2ynfuvijakgu4jyq7te",
-        "GraphQLAPIEndpointOutput": "https://mlx5l4msjzdg7kynqe34ryoz2i.appsync-api.sa-east-1.amazonaws.com/graphql"
+        "GraphQLAPIEndpointOutput": "https://mlx5l4msjzdg7kynqe34ryoz2i.appsync-api.sa-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-beoalkkvh5godoanumnbvar4ri"
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2024-03-25T12:53:43.884Z",
+      "lastPushTimeStamp": "2024-03-25T23:07:13.735Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-hisnekshop-dev-172229-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apihisnekshop"
-      },
-      "lastPushDirHash": "kjMq+fZRuff/6USqfA0ji6ZD9Qk="
+      }
     }
   },
   "auth": {
@@ -78,40 +85,35 @@
         "UserPoolId": "sa-east-1_QXC5iozfQ",
         "AppClientIDWeb": "5rtoad1f674lo4lcp87rghf4m3",
         "AppClientID": "6nmk9f9h3fk11fm2fm6epuv67h",
-        "IdentityPoolId": "sa-east-1:a060736a-9023-46b6-b71a-8486d3171fd5",
         "UserPoolArn": "arn:aws:cognito-idp:sa-east-1:975050167441:userpool/sa-east-1_QXC5iozfQ",
-        "IdentityPoolName": "hisnekshop8c36d814_identitypool_8c36d814__dev",
-        "UserPoolName": "hisnekshop8c36d814_userpool_8c36d814"
+        "UserPoolName": "hisnekshop8c36d814_userpool_8c36d814",
+        "IdentityPoolId": "sa-east-1:89975632-76b0-466f-9920-2492beb87fb8",
+        "IdentityPoolName": "hisnekshop8c36d814_identitypool_421673f5__dev"
       },
-      "lastPushTimeStamp": "2024-03-25T12:53:44.720Z",
+      "lastPushTimeStamp": "2024-03-25T23:07:13.867Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-hisnekshop-dev-172229-deployment/amplify-cfn-templates/auth/hisnekshop8c36d814-cloudformation-template.json",
         "logicalId": "authhisnekshop8c36d814"
       },
-      "lastPushDirHash": "+iHFJOrADzmwgJUGGf3bIXFCtMk="
-    },
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "hisnekshop8c36d814",
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID"
-          ]
-        }
-      ],
-      "lastPushTimeStamp": "2024-03-25T12:53:43.923Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hisnekshop-dev-172229-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
-        "logicalId": "authuserPoolGroups"
-      },
-      "output": {},
-      "lastPushDirHash": "YlzdSknkY9uz2MSohgbvwMINP+o="
+      "lastPushDirHash": "tq3TeKmcFceXj5zZZoFYXcv6d6U="
     }
   },
-  "function": {}
+  "function": {},
+  "storage": {
+    "s3hisnekshopstorage3f0e697b": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "lastPushTimeStamp": "2024-03-25T23:07:13.867Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hisnekshop-dev-172229-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storages3hisnekshopstorage3f0e697b"
+      },
+      "output": {
+        "BucketName": "hisnekshop-storage-3f0e697b172229-dev",
+        "Region": "sa-east-1"
+      },
+      "lastPushDirHash": "GSIrAXl7Y8v6bqBZgaCb3Wjh/CI="
+    }
+  }
 }

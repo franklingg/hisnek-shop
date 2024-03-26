@@ -2,7 +2,8 @@ export type AmplifyDependentResourcesAttributes = {
   "api": {
     "hisnekshop": {
       "GraphQLAPIEndpointOutput": "string",
-      "GraphQLAPIIdOutput": "string"
+      "GraphQLAPIIdOutput": "string",
+      "GraphQLAPIKeyOutput": "string"
     }
   },
   "auth": {
@@ -14,13 +15,10 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"
-    },
-    "userPoolGroups": {
-      "hisnekusersGroupRole": "string"
     }
   },
   "storage": {
-    "hisnekdata": {
+    "s3hisnekshopstorage3f0e697b": {
       "BucketName": "string",
       "Region": "string"
     }
