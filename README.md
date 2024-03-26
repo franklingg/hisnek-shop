@@ -18,8 +18,8 @@ Além disso, a AWS também é utilizada para autenticação de usuários, fornec
 
 ### Modelagem
 Especificamente para o frontend, foi pensada uma modelagem utilizando a arquitetura MVVM (Model-View-ViewModel) que faz alusão ao modelo estado-da-arte MVC mas o adapta para sistemas onde não existe um Controller e o aspecto visual é mais relevante (como é o caso de uma aplicação Frontend, especialmente mobile). Nesse modelo, destacamos as 4 Views (Login, Explorar, Produto e Carrinho) e os 3 Models (Usuário, Produto e ItemCarrinho) e como estes se relacionam na interação das telas.
-![Arquitetura HS (2)](https://github.com/franklingg/hisnek-test/assets/61962950/6943febb-d9df-4d61-98c6-edfdd549401e)
-![Arquitetura HS (3)](https://github.com/franklingg/hisnek-test/assets/61962950/847f3c0f-bece-4fb6-b4e9-d2dacd902e30)
+![Arquitetura HS (6)](https://github.com/franklingg/hisnek-shop/assets/61962950/e4ed5e2b-734e-482f-82c9-2358d69d86c8)
+![Arquitetura HS (5)](https://github.com/franklingg/hisnek-shop/assets/61962950/4b5cade2-9235-4b88-a7c1-9bca12bcb176)
 
 ## Design
 
